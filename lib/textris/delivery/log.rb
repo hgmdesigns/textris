@@ -16,6 +16,7 @@ module Textris
           logged_message << media_url
           log :debug, logged_message
         end
+        log :debug, "Status Callback Url #{message.status_callback_url}"
       end
 
       private

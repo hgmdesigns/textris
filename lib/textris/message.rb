@@ -1,12 +1,13 @@
 module Textris
   class Message
     attr_reader :content, :from_name, :from_phone, :to, :texter, :action, :args,
-      :media_urls, :twilio_messaging_service_sid
+      :media_urls, :twilio_messaging_service_sid, :status_callback_url
 
     def initialize(options = {})
       initialize_content(options)
       initialize_author(options)
       initialize_recipients(options)
+      initialize_status_callback_url(options)
 
       @texter     = options[:texter]
       @action     = options[:action]
@@ -85,6 +86,11 @@ module Textris
         raise(ArgumentError, "Recipients must be provided and E.164 compliant")
       end
     end
+    
+    def initialize_status_callback_url(options)
+      @status_callback = options.fetch(:status_callback) {''}
+    end
+
 
     def parse_from(from)
       parse_from_dual(from) || parse_from_singular(from)

@@ -4,7 +4,8 @@ module Textris
       def deliver(to)
         options = {
           :to   => PhoneFormatter.format(to),
-          :body => message.content
+          :body => message.content,
+          :status_callback => message.status_callback_url
         }
 
         if message.twilio_messaging_service_sid
