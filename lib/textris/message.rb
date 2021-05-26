@@ -88,7 +88,7 @@ module Textris
     end
     
     def initialize_status_callback_url(options)
-      @status_callback = options.fetch(:status_callback) {''}
+      @status_callback_url = options.fetch(:status_callback) {''}
     end
 
 
